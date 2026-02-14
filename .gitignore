@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Serverless
+.serverless/
+node_modules/
+.serverless_plugins/
+
+# Google Credentials
+config/credentials.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.local
+
+# NOTE: `.env.example` is intentionally tracked in the repository to provide
+# example values and usage. Do NOT add `.env.example` to this file.
+
+# AWS
+.aws-sam/
+samconfig.toml

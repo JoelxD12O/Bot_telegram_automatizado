@@ -1,0 +1,46 @@
+service: telegram-sheets
+
+provider:
+  name: aws
+  runtime: python3.10
+  region: us-east-1
+  environment:
+    SPREADSHEET_ID: ${env:SPREADSHEET_ID}
+    BOT_TOKEN: ${env:BOT_TOKEN}
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          Resource: "*"
+
+functions:
+  telegram:
+    handler: src.handler.main
+    timeout: 30
+    events:
+      - httpApi:
+          path: /telegram
+          method: post
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    layer: false
+
+package:
+  individually: false
+  patterns:
+    - 'src/**'
+    - 'config/credentials.json'
+    - '!node_modules/**'
+    - '!.venv/**'
+    - '!.git/**'
+    - '!__pycache__/**'
+    - '!*.pyc'
